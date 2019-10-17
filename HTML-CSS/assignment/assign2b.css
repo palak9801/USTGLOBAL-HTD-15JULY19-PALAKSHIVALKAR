@@ -1,0 +1,54 @@
+body{
+    border:1px solid black;
+    padding:3%;
+    margin-left: 28%;
+    margin-right: 28%;
+}
+
+#aa{
+    font-size: 170%;
+}
+form{
+    margin-left:4%;
+}
+
+
+#a{
+    color:gray;
+    width: 35%;
+    margin-left:1%;
+    
+    
+ 
+}
+#b{
+   
+    display: inline;
+    margin-left: 1%;
+    color:grey;
+}
+#c{
+    margin-left:18%;
+    color:gray;
+}
+#d{
+    width:66%;
+}
+#e{
+    color:grey;
+}
+#f{
+    margin-left:1%;
+    width:34%;
+}
+#fu{
+    width:30%;
+}
+#g{
+    color:gray;
+    margin-left:27%;
+}
+#h{
+    margin-left:12%;
+    color:gray;
+}

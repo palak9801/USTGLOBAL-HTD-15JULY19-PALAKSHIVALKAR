@@ -1,0 +1,174 @@
+body{
+    border:1px solid black;
+    
+    width:60%;
+    margin-left:19%;
+
+}
+form{
+    
+    background-color: rgb(209, 207, 207);
+    padding: 47px;
+}
+
+
+
+#a{
+margin-left: 11%;
+width: 18%;
+border-radius: 4px;
+height: 20px;
+}
+#b{
+margin-left:3%;
+width: 20%;
+border-radius: 4px;
+height: 20px;
+}
+#c{
+    margin-left:3%;
+    width: 22%;
+    border-radius: 4px;
+    height: 20px;
+}
+#d{
+    margin-left:184px;
+    color:grey;
+}
+#e{
+    margin-left:109px;
+    color:grey;
+}
+#f{
+    margin-left:108px;
+    color:grey;
+}
+#g{
+    margin-left:55px;
+    width: 56%;
+    border-radius: 4px;
+    height: 20px;
+}
+#h{
+    margin-left:184px;
+    color:grey;
+}
+#i{
+    margin-left:177px;
+    width: 56%;
+    border-radius: 4px;
+    height: 20px;
+}
+#j{
+    margin-left:176px;
+    width: 22%;
+    border-radius: 4px;
+    height: 20px;
+    
+}
+#k{
+    margin-left:2%;
+    width:31%;
+    border-radius: 4px;
+    height: 20px;
+}
+#l{
+    margin-left:184px;
+    color:grey;
+}
+#m{
+    margin-left:176px;
+    color:grey;
+}
+#n{
+    
+    border-radius: 4px;
+    margin-left: 67px;
+    width: 507px;
+    height: 20px;
+}
+#o{
+    margin-left: 65px;
+    width: 82px;
+    border-radius: 4px;
+    height: 20px;
+}
+#p{
+    width: 200px;
+    border-radius: 4px;
+    height: 20px;
+}
+#q{
+    margin-left:184px;
+    color:grey;
+}
+#r{
+    margin-left: 28px;
+    color:grey;
+}
+#s{
+    margin-left: 184px;
+    color:grey;
+}
+#t{
+    margin-left: 80px;
+    color:grey;
+}
+#u{
+    margin-left: 46px;
+    color:grey;
+}
+#v{
+    border:1px solid black;
+    margin-bottom: -47px;
+    height: 35px;
+    background-color: black;
+}
+.month{
+    margin-left: 94px;
+    width: 110px;
+    border-radius: 4px;
+    height: 20px;
+}
+.day{
+    margin-left: 8px;
+    width: 60px;
+    border-radius: 4px;
+    height: 20px;
+}
+.year{
+    margin-left: 7px;
+    width: 76px;
+    border-radius: 4px;
+    height: 20px;
+}
+button{
+    margin-left:195px;
+    margin-top: 9px;
+    background-color: rgb(255, 102, 0);
+    color: white;
+    border-radius: 3px;
+    height: 27px;
+    width: 60px;
+}
+#fu{
+    margin-left: 175px;
+    width: 180px;
+    border-radius: 4px;
+    height: 20px;
+}
+#fe{
+    margin-left: 18px;
+    width: 248px;
+    
+    border-radius: 4px;
+    height: 20px;
+}
+#fuu{
+    margin-left: 184px;
+    color: grey;
+}
+#ff{
+    margin-left: 92px;
+    color: grey;
+}

@@ -1,0 +1,63 @@
+div{
+    margin-left:35%;
+    margin-top:10%;
+    
+}
+
+span{
+    color:white;
+    width:70px;
+    height:100px;
+    background-color: rgb(209, 135, 231);
+    font-size:95px;
+    display:inline-block;
+
+     border-radius:20%;
+    
+    animation: movement 1s infinite linear ;  
+
+}
+
+@keyframes  movement{
+   0%{
+       transform: ;
+   }
+   50%{
+    transform: rotateY(50);
+}
+100%{
+    transform: rotateZ(50);
+}
+ 
+}
+
+
+span:nth-child(1){
+    background-color: teal;
+    animation-delay: 0.2s;
+    box-shadow: 0 0 40px rebeccapurple;
+}
+
+span:nth-child(2){
+    background-color:brown;
+    animation-delay: 0.4s;
+    box-shadow: 0 0 40px darkcyan;
+}
+
+span:nth-child(3){
+    background-color:hotpink;
+    animation-delay: 0.6s;
+    box-shadow: 0 0 40px seagreen;
+}
+
+span:nth-child(4){
+    background-color:goldenrod;
+    animation-delay: 0.8s;
+    box-shadow: 0 0 40px palevioletred;
+}
+
+span:nth-child(5){
+    background-color:greenyellow;
+    animation-delay: 1.0s;
+    box-shadow: 0 0 40px tomato;
+}

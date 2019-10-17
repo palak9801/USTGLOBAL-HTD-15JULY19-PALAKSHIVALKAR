@@ -1,0 +1,104 @@
+body{
+    background:white;
+    margin:0;
+    
+}
+#header{
+    background: white;
+    padding: 10px;
+   margin: 10 px;
+    height: 20px;
+
+}
+.logo{
+    width: 10%;
+    height:100px
+    float:left;
+}
+.menu{
+    width:200%;
+    height:200%;
+    text-align:right;
+    margin: 0;
+    float:right;
+}
+.logo img{
+    width=80px;
+    height:80px;
+    margin: 0px 14px;
+}
+
+.menu a{
+    color: aqua;
+    text-decoration: none;
+    padding: 15px;
+    background: gray;
+    font-weight:bold;
+    border-radius: 5px;
+}
+
+.menu a:hover{
+    background: indianred;
+    
+}
+
+
+
+#slider{
+    width:50%;
+    height:400px;
+}
+
+#slider img{
+    width:210%;
+    height:700px;
+}
+.helptext{
+    opacity:0.7;
+    background: tomato;
+    position:absolute;
+    top:225px;
+    width:600px;
+    margin: 29px 300px;
+}
+
+
+.helptext h1{
+    margin:30px;
+    text-align:center;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-shadow:3px 3px 3px crimson;
+    padding:5px 125px;
+    width:300px;
+    
+}
+
+.helptext p{
+    font-size:20px;
+    padding:20px 19px;
+    line-height:30px;
+    text-decoration-color
+    text-decoration-color
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

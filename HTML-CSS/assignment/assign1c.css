@@ -1,0 +1,10 @@
+table,tr,td{
+    border:1px solid black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   
+}
+table{
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 10%;
+}
