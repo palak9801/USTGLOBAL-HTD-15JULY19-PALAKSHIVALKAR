@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>assignment24-7</title>
+</head>
+<body>
+  <script>
+    var vehicle=new Object();
+        vehicle.type='CAR';
+        vehicle.name='Toyota';
+        vehicle.color='Black';
+        vehicle.model='MR2';
+        function getData(){                           //name function
+        console.log('Vehicle Type--'+vehicle.type);
+        console.log('Vehicle Name--'+vehicle.name);
+        console.log('Vehicle Color--'+vehicle.color);
+        console.log('Vehicle Model--'+vehicle.model);
+         }
+        getData();
+
+        
+        
+      
+
+    var books=new Object();
+        books.genre='Mystry';
+        books.name='The Women in White';
+        books.author='Wilkie Collins';
+        books.published='26 November';
+        var getBook= function(){                        // function expression
+        console.log('Book Genre--'+books.genre);
+        console.log('Book Name--'+books.name);
+        console.log('Book Author--'+books.author);
+        console.log('Book Published on --'+books.genre);
+        }
+        getBook();
+
+
+
+
+    var restaurant=new Object();
+        restaurant.area='Mumbai';
+        restaurant.name='Taj Hotels';
+        restaurant.rating='5-star';
+        restaurant.noofrooms=550;
+        (function(){
+        console.log('Restaurant Name--'+restaurant.name);
+        console.log('Restaurant Area--'+restaurant.area);
+        console.log('Restaurant Rating--'+restaurant.rating);
+        console.log('Restaurant Number of Rooms--'+restaurant.noofrooms);
+        }())
+
+
+        var bag=new Object();
+            bag.brand="Wildcraft";
+            bag.color="black";
+            bag.noofchain=3;
+            bag.size="20 inches";
+            var getBag=function(){
+            console.log('Bag Brand--'+bag.brand);
+            console.log('Bag Color--'+bag.color);
+            console.log('Bag No. of chains--'+bag.noofchain);
+            console.log('Bag Size--'+bag.size);
+            }
+            getBag();
+
+
+        var cloth=new Object();
+            cloth.type="shirt";
+            cloth.color="blue";
+            cloth.material="cotton";
+            cloth.prize=1000;
+            var getCloth=function(){
+            console.log('Cloth Type--'+cloth.type);
+            console.log('Cloth Color--'+cloth.color);
+            console.log('Cloth Material--'+cloth.material);
+            console.log('Cloth Prize(in rs.)--'+cloth.prize);
+            }
+            getCloth();
+
+            console.log('=======object without new keyword=================');
+
+            var vehicle;
+            vehicle={
+              type:'CAR',
+             name:'Toyota',
+             color:'Black',
+             model:'MR2',
+              getType:function()
+             {
+                 return this.type;
+                 return this.name;
+                 return this.color;
+                 return this.model;
+             }
+             };
+            var type=vehicle.getType();
+            console.log('Vehicle Type--'+type);
+            var name=vehicle.getType();
+            console.log('Vehicle Name--'+vehicle.name);
+            var color=vehicle.getType();
+            console.log('Vehicle Color--'+vehicle.color);
+            var model=vehicle.getType();
+            console.log('Vehicle Model--'+vehicle.model);
+
+
+            var books;
+            books={
+        genre:'Mystry',
+        name:'The Women in White',
+        author:'Wilkie Collins',
+        published:'26 November',
+        getBook:function()
+        {     
+            return this.genre;
+            return this.name;
+            return this.author;
+            return this.published;  
+                         }
+                                         };   
+       var genre=books.getBook();                                              // function expression
+        console.log('Book Genre--'+books.genre);
+        var type=vehicle.getType();
+        console.log('Book Name--'+books.name);
+        var type=vehicle.getType();
+        console.log('Book Author--'+books.author);
+        var type=vehicle.getType();
+        console.log('Book Published on --'+books.published);
+
+
+
+        var restaurant;
+        restaurant={
+        area:'Mumbai',
+        name:'Taj Hotels',
+        rating:'5-star',
+        noofrooms:550,
+        getRestaurant:function(){
+            return this.area;
+            return this.name;
+            return this.rating;
+            return this.noofrooms;
+        }};
+        var area=restaurant.getRestaurant();  
+        console.log('Restaurant Area--'+restaurant.area);
+        var name=restaurant.getRestaurant();  
+        console.log('Restaurant Name--'+restaurant.name);
+        var rating=restaurant.getRestaurant();  
+        console.log('Restaurant Rating--'+restaurant.rating);
+        var noofrooms=restaurant.getRestaurant();  
+        console.log('Restaurant Number of Rooms--'+restaurant.noofrooms);
+        
+        
+            
+        var bag;
+        bag={
+            brand:"Wildcraft",
+            color:"black",
+            noofchain:3,
+            size:"20 inches",
+             getBag:function(){
+                return this.brand;
+            return this.color;
+            return this.noofchain;
+            return this.size;
+             }};
+             var brand=bag.getBag();
+            console.log('Bag Brand--'+bag.brand);
+            var color=bag.getBag();
+            console.log('Bag Color--'+bag.color);
+            var noofchain=bag.getBag();
+            console.log('Bag No. of chains--'+bag.noofchain);
+            var size=bag.getBag();
+            console.log('Bag Size--'+bag.size);
+            
+
+            var cloth;
+            cloth={
+            type:"shirt",
+            color:"blue",
+            material:"cotton",
+            prize:1000,
+             getCloth:function(){
+                return this.type;
+            return this.color;
+            return this.material;
+            return this.prize;
+             }};
+
+             var type=cloth.getCloth();
+            console.log('Cloth Type--'+type);
+            var color=cloth.getCloth();
+            console.log('Cloth Color--'+cloth.color);
+            var material=cloth.getCloth();
+            console.log('Cloth Material--'+cloth.material);
+            var prize=cloth.getCloth();
+            console.log('Cloth Prize(in rs.)--'+cloth.prize);
+            
+
+
+
+           console.log('=============array using new keyword==============');  
+
+            var flowers=new Array('Rose','Lily','Tulips','Orchid');
+        console.log(flowers);
+
+
+        var colour=new Array('White','Black','Blue','Orange','yellow');
+        console.log(colour);
+
+
+        var ProgrammingLanguage=new Array('JAVA','Python','Ruby','Node.js','c#');
+        console.log(ProgrammingLanguage);
+
+
+        var Engineering=new Array('IT Engineering','Computer Engineering','Electronics and Telecommunication Engineering','Mechanical Engineering','Electronics Engineering','Civil Engineering'); 
+        console.log(Engineering);
+
+
+        var Dogs=new Array('Bull Dog','Labrador Dog','Beagle','Pug','German Shepherd','Doberman');
+        console.log(Dogs);
+
+        console.log('=============array without using new keyword==============');  
+        
+        var flowers=['Rose','Lily','Tulips','Orchid'];
+        console.log(flowers);
+
+        var colour=['White','Black','Blue','Orange','yellow'];
+        console.log(colour);
+
+        var ProgrammingLanguage=['JAVA','Python','Ruby','Node.js','c#'];
+        console.log(ProgrammingLanguage);
+
+        var Engineering=['IT Engineering','Computer Engineering','Electronics and Telecommunication Engineering','Mechanical Engineering','Electronics Engineering','Civil Engineering']; 
+        console.log(Engineering);
+
+        var Dogs=['Bull Dog','Labrador Dog','Beagle','Pug','German Shepherd','Doberman'];
+        console.log(Dogs);
+
+        console.log('=============using loop through array==============');  
+
+        var flowers=['Rose','Lily','Tulips','Orchid'];
+        for(var i=0;i<flowers.length;i++)
+        {
+        console.log(flowers[i]);}
+        console.log('==============');
+
+        var colour=['White','Black','Blue','Orange','yellow'];
+        for(var i=0;i<flowers.length;i++)
+        {
+        console.log(colour[i]);}
+        console.log('==============');
+
+        var ProgrammingLanguage=['JAVA','Python','Ruby','Node.js','c#'];
+        for(var i=0;i<flowers.length;i++)
+        {
+        console.log(ProgrammingLanguage[i]);}
+        console.log('==============');
+
+        var Engineering=['IT Engineering','Computer Engineering','Electronics and Telecommunication Engineering','Mechanical Engineering','Electronics Engineering','Civil Engineering']; 
+        for(var i=0;i<flowers.length;i++)
+        {
+        console.log(Engineering[i]);}
+        console.log('==============');
+
+        var Dogs=['Bull Dog','Labrador Dog','Beagle','Pug','German Shepherd','Doberman'];
+        for(var i=0;i<flowers.length;i++)
+        {
+        console.log(Dogs[i]);}
+
+
+
+
+        console.log('================6 javascript engine=============');
+        console.log('Chrome----V8 engine ');
+        console.log('Internet Explorer----Chakra ');
+        console.log('Morzilla Firefox----Spider Monkey ');
+        console.log('Safari----Javascript core ');
+        console.log('Opera----Carakan ');
+        console.log('Chrome----V8 engine ');
+
+    
+    </script>  
+</body>
+</html>
