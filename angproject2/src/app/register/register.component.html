@@ -1,0 +1,35 @@
+
+<div class="container card card-body col-md-6 mt-5">
+<form [formGroup]='registerForm' (ngSubmit)='printForm(registerForm)' class="form-group ">
+    <div>
+    <input type="text" class="form-control mt-5" formControlName="name" minlength="5" required placeholder="Enter the name">
+    <div *ngIf='name.touched && name.invalid'>
+        <div  class="alert alert-danger"  *ngIf='name.errors.minlength'>The minimum length should be 5</div>
+     </div>
+    </div>
+
+
+    <div>
+    <input type="email" class="form-control mt-5" formControlName="email" email required placeholder="Enter the email">
+      <div *ngIf='email.touched && email.invalid'>
+          <div class="alert alert-danger" *ngIf='email.errors.email'>this take only email</div>
+          <div class="alrt alert-danger" *ngIf='email.errors.noSpace'>Do not give spaces in between</div>
+
+      </div>
+
+    </div>
+
+
+    <div>
+    <input type ="tel" class="form-control mt-5" formControlName="mobile" minlength="10" required placeholder="Enter the mobile no">
+    <div *ngIf='mobile.touched && mobile.invalid'>
+        <div class="alert alert-danger" *ngIf='mobile.errors.minlength'>the minimum length should be 10</div>
+        
+    </div>
+    </div>
+    <div>
+    <button type="submit" class="btn btn-outline-success mt-5" [disabled]='registerForm.invalid'  >Submit</button>
+    </div>
+
+</form>
+</div>

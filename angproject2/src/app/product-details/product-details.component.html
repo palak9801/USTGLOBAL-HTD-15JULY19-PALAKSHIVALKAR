@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="card card-body col-md-5" *ngFor="let product of Products">
+        <h3>{{product.name}}</h3>
+        <img src="{{product.url}}">
+        <p>{{product.desc}}</p>
+        
+         <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" (click)= 'sendProduct(product)' data-target="#exampleModal">
+        Update
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+             <div class="card card-body  mt-5">
+
+                <form  class="form-group" #formm= 'ngForm' (ngSubmit)='UpdateData(product.id, product.value)'>
+                    <div>
+                      <input class="form-control mt-5" type="text" name="name" #name='ngModel' ngModel [(ngModel)]='product.name' placeholder="enter the product name">
+                    </div>
+                     <div>
+                        <input class="form-control mt-5" type="text" name="url" #url='ngModel' ngModel [(ngModel)]='product.url' placeholder="enter the product img url">
+                     </div>
+                        <div>
+                        <textarea class="form-control mt-5" name="desc" #desc='ngModel' ngModel [(ngModel)]='product.desc' placeholder="enter the product description"></textarea>
+                     </div>
+                        <div>
+                         <button class="btn btn-success mt-5 " type="submit">Add product</button>
+                     </div>
+                            
+                </form>
+             </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <div>
+     <button  class="btn btn-danger form-control" (click)="deleteData(product.id)">Delete</button>
+     </div>
+    </div>
+    </div>
+
+
+
+<!-- <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Url</th>
+            <th>Description</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of Products; index as i">
+            <td>{{i+1}}</td>
+            <td>{{product.name}}</td>
+            <td><img src="{{product.url}}"></td>
+            <td>{{product.desc}}</td>
+            <td><button type="submit" class="btn btn-primary" (click)= 'sendProduct(product)'>Update</button>
+            
+            </td>
+        </tr>
+    </tbody>
+</table> -->

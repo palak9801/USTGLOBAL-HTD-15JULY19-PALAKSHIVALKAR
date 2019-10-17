@@ -1,0 +1,43 @@
+<div class="container">
+    <!-- <div class="card card-body "  *ngFor="let typi of typicode"> -->
+
+         <table class="table table-bordered mt-5 table-hover">
+             <thead style="background-color: mediumspringgreen">
+                 <tr style="font-weight:bold; font-size:25px; text-align: center">
+                     <th>User Id</th>
+                     <th>Id</th>
+                     <th>Title</th>
+                     <th>Description</th>
+                 </tr>
+             </thead>
+             <tbody style="background-color: rgb(149, 206, 204)">
+                 <tr *ngFor="let typi of typicode">
+                     <td>{{typi.userId}}</td>
+                     <td>{{typi.id}}</td>
+                     <td>{{typi.title}}</td>
+                     <td>{{typi.body}}</td>
+                 </tr>
+             </tbody>
+         </table>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <img src="{{typi.avatar_url}}">
+        <h3>{{typi.id}}</h3>
+        <h4>{{typi.userId}}</h4>
+
+        <p>{{typi.title}}</p>
+        <a href="{{typi.body}}" class="btn btn-primary">
+            click here for more info....
+        </a> -->
+    <!-- </div> -->
+</div>

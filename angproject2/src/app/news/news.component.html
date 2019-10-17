@@ -1,0 +1,10 @@
+<div class="col-md-6 offset-md-1 card card-body float-left" style="overflow:scroll; height:700px; background-color: cadetblue">
+    <div  *ngFor="let news of indianNews">
+        <img src="{{news.urlToImage}}">
+        <h3>{{news.title}}</h3>
+        <p>{{news.description}}</p>
+        <a href="{{news.url}}" class="btn btn-success  form-control">
+            click for more info....
+        </a>
+    </div>
+</div>

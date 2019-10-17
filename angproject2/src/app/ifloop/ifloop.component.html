@@ -1,0 +1,10 @@
+<p>ifloop works!</p>
+
+<div *ngIf="isUserLoggedIn; else logout">
+    <h3>WELCOME!!!!!</h3>         
+                                                <!-- if boolean is true -->
+</div>
+
+<ng-template #logout>
+    <p>YOU ARE LOGOUT!!!!</p>             <!--if boolean is false-->
+</ng-template>

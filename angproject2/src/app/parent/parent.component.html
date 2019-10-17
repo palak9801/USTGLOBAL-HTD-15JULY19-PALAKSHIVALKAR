@@ -1,0 +1,12 @@
+<p>parent works!</p>
+
+<!-- <app-child [uname]="username"></app-child>     for parent to child  -->
+
+<div>
+    <h1>hiiiiiii</h1>
+    <p>{{childData}}</p>
+    
+</div>
+
+<app-child (notify)="parentMethod($event )"></app-child>
+

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="card card-body  mt-5">
+
+<form  class="form-group" #formm= 'ngForm' (ngSubmit)='sendData(formm.value)'>
+    <div>
+        <input class="form-control mt-5" type="text" name="name" #name='ngModel' ngModel placeholder="enter the product name">
+    </div>
+    <div>
+            <input class="form-control mt-5" type="text" name="url" #url='ngModel' ngModel placeholder="enter the product img url">
+        </div>
+        <div>
+                <textarea class="form-control mt-5" name="desc" #desc='ngModel' ngModel placeholder="enter the product description"></textarea>
+            </div>
+            <div>
+                <button class="btn btn-success mt-5 " type="submit">Add product</button>
+            </div>
+
+</form>
+</div>
+</div>

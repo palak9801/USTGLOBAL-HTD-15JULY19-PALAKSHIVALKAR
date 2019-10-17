@@ -1,0 +1,15 @@
+
+<div style="background-color: rgb(183, 216, 216)">
+
+<div class="container  offset-3 " >
+    <div class="card card-body mb-5 "  *ngFor="let git of github" style="height:700px; width:800px ">
+        <img src="{{git.avatar_url}}">
+        <h3 style="text-align: center">{{git.id}}</h3>
+
+        <p style="text-align: center">NODE ID{{git.node_id}}</p>
+        <a href="{{git.url}}" class="btn btn-warning" >
+            click here for more info....
+        </a>
+    </div>
+</div>
+</div>
