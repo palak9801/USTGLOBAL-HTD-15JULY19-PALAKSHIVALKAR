@@ -1,0 +1,10 @@
+<div *ngFor="let user of addproductService.users;index as i">
+    <!-- <h5>{{i+1}}</h5> -->
+    <h5>{{user.name}}</h5>
+    <img {{user.image }}>
+    <h5>{{user.desc}}</h5>
+    
+    <button class="btn btn-outline-warning" (click)='updateUser(user)'>Update</button>
+                
+                        <button class="btn btn-outline-danger" (click)='deleteUser(user)'>Delete</button>
+    </div>
