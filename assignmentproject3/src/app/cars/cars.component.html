@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        
+                <th>Index</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Release Date</th>
+                <th>Cost</th>
+                <th>Unit Sold</th>
+                <th>Update</th>
+                <th>Delete</th>
+            
+        </thead>
+        <tbody>
+            <tr *ngFor = "let car of firebaseService.cars; index as i">
+                <td>{{i+1}}</td>
+                <td>{{car.brand}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.release}}</td>
+                    <td>{{car.cost}}</td>
+                    <td>{{car.unit}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" (click)='updateCar(car)'>Update</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)='deleteCar(car)'>Delete</button>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
