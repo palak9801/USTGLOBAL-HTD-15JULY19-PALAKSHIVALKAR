@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:component-scan base-package="com.ustglobal.ustglobalspringcore.beans"></context:component-scan>
+
+	<bean id="obj"
+		class="com.ustglobal.ustglobalspringcore.beans.HelloWorld" autowire ="byName">   <!--1. -->
+		<property name="msg" value="Helloo World !!"></property>
+		<property name="count" value="10" />
+		<!-- <property name="animal" ref="human"></property>     3.-->
+
+
+
+		<property name="map">
+			<map>
+				<entry key="Abc" value="123"/>
+				<entry key="Xyz" value="987"/>
+			</map>
+			
+			<!-- for list
+			 <list>
+			<value></value>
+			<ref></ref>
+			</list> -->
+			
+			</property>
+	</bean>
+	
+	
+	
+	<bean id="postProcesser" class="com.ustglobal.ustglobalspringcore.beans.PostProccesor"/>
+	<bean id="factoryPostProcessor" class="com.ustglobal.ustglobalspringcore.beans.FactoryPostProcessor"/>
+
+
+	<bean id="dog" class="com.ustglobal.ustglobalspringcore.beans.Dog"  init-method="init" destroy-method="destroy"/>
+	<!-- <bean id="human" class="com.ustglobal.ustglobalspringcore.beans.Human" />    1.-->    
+      
+
+	<bean id="pet" class="com.ustglobal.ustglobalspringcore.beans.Pet" autowire="constructor"><!--2.  -->
+		<!-- to pass value to the arg constructor we have constructor-arg -->
+		<constructor-arg name="name" value="Judo" />
+		<!-- <constructor-arg name="animal" ref="dog" /> 2.-->
+	</bean>
+	
+	
+	
+	
+	
+
+      
+   </beans>
+	
+	
+	
+	
+	
+	
+	
+	
+	
