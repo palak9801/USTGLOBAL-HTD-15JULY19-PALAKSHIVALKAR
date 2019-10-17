@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tasks of task">
+
+            <td>{{tasks.taskname}}</td>
+            <td><button class="btn btn-success" (click)='sendStudent(tasks)'>Update</button> </td>
+            <td><button class="btn btn-danger" (click)='deleteData(tasks.id)'>Delete</button></td>
+        </tr>
+
+    </tbody>
+</table>
+
+<form name="form" #form='ngForm' (ngSubmit)='updateData(tasks.id, form.value)'>
+    <div>
+        <input type="text" name="taskname" #taskname='ngModel' ngModel [(ngModel)]="task.taskname">
+    </div>
+
+    <button type="submit" class="btn btn-outline-success">Add Product</button>
+</form>

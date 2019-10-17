@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="card card-body col-md-8 offset-2 mt-5" style="background-color:aquamarine; height: 200px;">
+        <form name="form" class="form-group" #form='ngForm' (ngSubmit)='printForm(form)'>
+            <div>
+                <input class="form-control mt-3" type="text" name="taskname" #taskname='ngModel' ngModel
+                    placeholder="Enter the Task">
+            </div>
+            <button class="btn btn-success mt-5" (click)='sendData()'>Add Task</button>
+        </form>
+    </div>
+</div>

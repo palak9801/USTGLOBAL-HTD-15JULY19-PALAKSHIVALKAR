@@ -1,0 +1,25 @@
+package com.ustglobal.hotelbilling.HotelBillingg;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class Connection {
+	
+	static EntityManagerFactory factory=null;
+	static EntityManager entityManager=null;
+	static EntityTransaction transaction=null;
+	
+	
+		
+	public static EntityManager getConnection(){	
+		factory=Persistence.createEntityManagerFactory("TestPersistence");
+		entityManager=factory.createEntityManager();
+		//transaction=entityManager.getTransaction();
+        return entityManager;
+	}
+
+}
+
+
