@@ -1,0 +1,1631 @@
+
+                                                                                                       
+8.                   [ to drop a table. It will drop the data and structure also]
+9.                                                     
+10.     drop database ustglobal         [ to drop a database ]                 { drop database database_name} 
+11.  show databases;                 [  to show all the databases]
+     create database ust;            [creating databases]
+     show databases;
+     use ust;                        [to use particular database ]
+      create table emp(id int, name varchar(150), address varchar(200));       {   create table table_name(column_name datatype,…..}
+                                          [ A table is created student with 3 columns id, name and email id]
+       show tables;                     [ to check if there are any table present]
+       desc emp;                    [use to describe the table]
+      
+12.  alter table emp add column mobileno int;           
+                                          [using alter we can add column]
+13. desc emp;                             
+14.  alter table emp add address varchar(220);                                      
+15.  alter table emp add state  varchar(220);                                     
+16.   desc emp;                                    
+17.  alter table emp drop address;                                                        
+18.  desc emp;                                                       
+19.  alter table emp drop state ;                                                      
+20.  desc emp;           
+     rename table emp to employee;              [change the table name, we cannot change the database name ]
+     show tables;                                             
+       insert into employee(id, empname,  address) values(1254, 'palak',  'mumbai');
+    select *from employee;    [to display the table]
+    insert into employee(id) values(1225);   [to insert values in some particular columns. only ]
+      update employee set address='delhi';    [will update the whole column with the value specified]
+     delete from employee;            [delete the whole table]
+
+truncate table employee;     [to delete all the records present in table]
+select empname from employee;   [projection]
+
+
+QUESTION--write a query to retrive data from table employee whose name is palak and id-4587
+   select *from employee where empname='palak';
+   select *from employee where id='3652';
+   
+
+ update employee set  address='delhi' where id=4587;    
+    delete from employee where id=4587;     [particular row will be deleted where id=4587]
+
+
+---------------------create table using constraints------------------------
+
+ create table emp_info(id int, name varchar(120) not null, emailid varchar(120), designation varchar(120), mobileno int, age int, dob date not null, doj date, salary double, dept_id int, blood_group varchar(120), primary key(id));
+
+
+12-08-19
+
+----------------query to  give temporary name of column blood group as bg and display only id name and blood group--------------------------
+
+
+select id,name, blood_group as bg from emp_info;
+
+
+
+---------------query to display employee name, annual salary, designation---------------
+
+
+ select name, designation, salary*12 as Sal from emp_info;
+             or
+  select name, designation,salary, salary*12 Annual_Sal from emp_info;
+
+---------------------query to give the alias name for all the columns present in the emp_info table--------------
+
+ select id emp_id, name emp_name, emailid email_id, designation emp_desig, mobileno mobno, age emp_age, dob as emp_dob, doj emp_doj, salary emp_salary, dept_id emp_dept_id, blood_group emp_bg from emp_info;
+
+
+--------------query to display the unique department id from emp_info table-----------
+
+select distinct dept_id from emp_info;
+
+-----------query to display the distint value for designation and dept_id--------------
+
+select distinct designation, dept_id from emp_info;
+
+--------query to display unique dept_id , designation, age from emp_info table--------------
+
+select distinct designation, dept_id, age from emp_info;
+
+-------query to display name, salary and salary increment by 5000------------
+
+select name, salary, salary+5000  incremented_salary from emp_info;  
++------------+--------+--------------------+
+| name       | salary | incremented_salary |
++------------+--------+--------------------+
+| Palak      |  35000 |              40000 |
+| Pushkar    |  32000 |              37000 |
+| Tejas      |  36000 |              41000 |
+| Prathamesh |  32000 |              37000 |
+| Ameyaa     |  40000 |              45000 |
+| Shaahank   |  45000 |              50000 |
+| Yatmesh    |  30000 |              35000 |
+| Nikunj     |  36000 |              41000 |
+| Khushal    |  42000 |              47000 |
+| Laksh      |  40000 |              45000 |
+| Shivani    |  38000 |              43000 |
+| Om         |  34000 |              39000 |
+| Anwesha    |  32000 |              37000 |
+| Aaradhya   |  31000 |              36000 |
+| Shreyas    |  31000 |              36000 |
++------------+--------+--------------------+ 	
+
+-------query to display name, salary and salary decrement by 5000------------
+
+select name, salary, salary-5000  decremented_salary from emp_info;
++------------+--------+--------------------+
+| name       | salary | decremented_salary |
++------------+--------+--------------------+
+| Palak      |  35000 |              30000 |
+| Pushkar    |  32000 |              27000 |
+| Tejas      |  36000 |              31000 |
+| Prathamesh |  32000 |              27000 |
+| Ameyaa     |  40000 |              35000 |
+| Shaahank   |  45000 |              40000 |
+| Yatmesh    |  30000 |              25000 |
+| Nikunj     |  36000 |              31000 |
+| Khushal    |  42000 |              37000 |
+| Laksh      |  40000 |              35000 |
+| Shivani    |  38000 |              33000 |
+| Om         |  34000 |              29000 |
+| Anwesha    |  32000 |              27000 |
+| Aaradhya   |  31000 |              26000 |
+| Shreyas    |  31000 |              26000 |
++------------+--------+--------------------+
+
+-------query to display name, annual salary------------
+
+select name, salary, salary*12  annual_salary from emp_info;
++------------+--------+---------------+
+| name       | salary | annual_salary |
++------------+--------+---------------+
+| Palak      |  35000 |        420000 |
+| Pushkar    |  32000 |        384000 |
+| Tejas      |  36000 |        432000 |
+| Prathamesh |  32000 |        384000 |
+| Ameyaa     |  40000 |        480000 |
+| Shaahank   |  45000 |        540000 |
+| Yatmesh    |  30000 |        360000 |
+| Nikunj     |  36000 |        432000 |
+| Khushal    |  42000 |        504000 |
+| Laksh      |  40000 |        480000 |
+| Shivani    |  38000 |        456000 |
+| Om         |  34000 |        408000 |
+| Anwesha    |  32000 |        384000 |
+| Aaradhya   |  31000 |        372000 |
+| Shreyas    |  31000 |        372000 |
++------------+--------+---------------+
+
+-------query to display name, salary per day------------
+
+select name, salary, salary/30  per_day_salary from emp_info;
++------------+--------+--------------------+
+| name       | salary | per_day_salary     |
++------------+--------+--------------------+
+| Palak      |  35000 | 1166.6666666666667 |
+| Pushkar    |  32000 | 1066.6666666666667 |
+| Tejas      |  36000 |               1200 |
+| Prathamesh |  32000 | 1066.6666666666667 |
+| Ameyaa     |  40000 | 1333.3333333333333 |
+| Shaahank   |  45000 |               1500 |
+| Yatmesh    |  30000 |               1000 |
+| Nikunj     |  36000 |               1200 |
+| Khushal    |  42000 |               1400 |
+| Laksh      |  40000 | 1333.3333333333333 |
+| Shivani    |  38000 | 1266.6666666666667 |
+| Om         |  34000 | 1133.3333333333333 |
+| Anwesha    |  32000 | 1066.6666666666667 |
+| Aaradhya   |  31000 | 1033.3333333333333 |
+| Shreyas    |  31000 | 1033.3333333333333 |
++------------+--------+--------------------+
+
+--------query to divide 10 by 3------------
+
+select 10%3;
++------+
+| 10%3 |
++------+
+|    1 |
++------+
+ select 10%3 modulus;
++---------+
+| modulus |
++---------+
+|       1 |
++---------+
+
+---------------query to display all the records excluding dept_id 10-----------
+select * from emp_info where dept_id!=10;
+
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  33 | Tejas      | tejas@gmail.com      | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman    |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst     |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  66 | Shaahank   | shashank@gmail.com   | Tester      |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR          |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal    | khushal@gmail.com    | Analyst     |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst     |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman    |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
+| 161 | Shreyas    | shreyas@gmail.com    | Tester      |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+ 
+
+
+---------------query to display name, mobno, whose salary>5000-----------
+
+select name, mobileno, designation, salary from emp_info where salary>5000;
++------------+----------+--------------------+--------+
+| name       | mobileno | designation        | salary |
++------------+----------+--------------------+--------+
+| Palak      |   986975 | Software Developer |  35000 |
+| Pushkar    |   985824 | HR                 |  32000 |
+| Tejas      |   945824 | Clerk              |  36000 |
+| Prathamesh |   922824 | Salesman           |  32000 |
+| Ameyaa     |    92252 | Analyst            |  40000 |
+| Shaahank   |    92252 | Tester             |  45000 |
+| Yatmesh    |    92522 | Clerk              |  30000 |
+| Nikunj     |   981255 | HR                 |  36000 |
+| Khushal    |   985842 | Analyst            |  42000 |
+| Laksh      |   985458 | Analyst            |  40000 |
+| Shivani    |   985258 | HR                 |  38000 |
+| Om         |   985121 | Tester             |  34000 |
+| Anwesha    |   925121 | Analyst            |  32000 |
+| Aaradhya   |   925145 | Salesman           |  31000 |
+| Shreyas    |   925545 | Tester             |  31000 |
++------------+----------+--------------------+--------+
+
+
+---------------query to display name, mobno, whose salary<38000-----------
+select name, mobileno, designation, salary from emp_info where salary<38000;
++------------+----------+--------------------+--------+
+| name       | mobileno | designation        | salary |
++------------+----------+--------------------+--------+
+| Palak      |   986975 | Software Developer |  35000 |
+| Pushkar    |   985824 | HR                 |  32000 |
+| Tejas      |   945824 | Clerk              |  36000 |
+| Prathamesh |   922824 | Salesman           |  32000 |
+| Yatmesh    |    92522 | Clerk              |  30000 |
+| Nikunj     |   981255 | HR                 |  36000 |
+| Om         |   985121 | Tester             |  34000 |
+| Anwesha    |   925121 | Analyst            |  32000 |
+| Aaradhya   |   925145 | Salesman           |  31000 |
+| Shreyas    |   925545 | Tester             |  31000 |
++------------+----------+--------------------+--------+
+
+-----------------query to display  name, mobno, whose salary>=38000-----------
+
+ select name, mobileno, designation, salary from emp_info where salary>=38000;
++----------+----------+-------------+--------+
+| name     | mobileno | designation | salary |
++----------+----------+-------------+--------+
+| Ameyaa   |    92252 | Analyst     |  40000 |
+| Shaahank |    92252 | Tester      |  45000 |
+| Khushal  |   985842 | Analyst     |  42000 |
+| Laksh    |   985458 | Analyst     |  40000 |
+| Shivani  |   985258 | HR          |  38000 |
++----------+----------+-------------+--------+
+
+-----------------query to display  name, mobno, whose salary<=45000-----------
+
+select name, mobileno, designation, salary from emp_info where salary<=45000;
++------------+----------+--------------------+--------+
+| name       | mobileno | designation        | salary |
++------------+----------+--------------------+--------+
+| Palak      |   986975 | Software Developer |  35000 |
+| Pushkar    |   985824 | HR                 |  32000 |
+| Tejas      |   945824 | Clerk              |  36000 |
+| Prathamesh |   922824 | Salesman           |  32000 |
+| Ameyaa     |    92252 | Analyst            |  40000 |
+| Shaahank   |    92252 | Tester             |  45000 |
+| Yatmesh    |    92522 | Clerk              |  30000 |
+| Nikunj     |   981255 | HR                 |  36000 |
+| Khushal    |   985842 | Analyst            |  42000 |
+| Laksh      |   985458 | Analyst            |  40000 |
+| Shivani    |   985258 | HR                 |  38000 |
+| Om         |   985121 | Tester             |  34000 |
+| Anwesha    |   925121 | Analyst            |  32000 |
+| Aaradhya   |   925145 | Salesman           |  31000 |
+| Shreyas    |   925545 | Tester             |  31000 |
++------------+----------+--------------------+--------+
+
+
+------------------query to display all the records who is working with dept_id 20 only if salary>10000-------------
+
+select * from emp_info where dept_id=20 && salary>10000;
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  33 | Tejas    | tejas@gmail.com    | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  77 | Yatmesh  | yatmesh@gmail.com  | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+| 151 | Aaradhya | aaradhya@gmail.com | Salesman    |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+
+-----------------query to dispaly all the record of emp_info table who is working as salesman and dob is 1994-------------
+
+select * from emp_info where designation='Salesman' and dob='1994-05-24';
++----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name       | emailid              | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| 44 | Prathamesh | prathamesh@gmail.com | Salesman    |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
++----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+------------query to display table content where designation=software developer and salary=35000-----------------
+
+
+ select * from emp_info where designation='software developer' and salary=35000;
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name  | emailid         | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| 11 | Palak | palak@gmail.com | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+------------query to display all the records who is working in dept_id=20 or dept_id=60------
+
+ select * from emp_info where dept_id=20 or dept_id=60;
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  33 | Tejas    | tejas@gmail.com    | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  77 | Yatmesh  | yatmesh@gmail.com  | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+| 151 | Aaradhya | aaradhya@gmail.com | Salesman    |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+------query to display name, salary, email id who is working as tester or age>20---------
+
+ select name, salary, emailid from emp_info where designation='Tester' or age>20;
++------------+--------+----------------------+
+| name       | salary | emailid              |
++------------+--------+----------------------+
+| Palak      |  35000 | palak@gmail.com      |
+| Tejas      |  36000 | tejas@gmail.com      |
+| Prathamesh |  32000 | prathamesh@gmail.com |
+| Shaahank   |  45000 | shashank@gmail.com   |
+| Khushal    |  42000 | khushal@gmail.com    |
+| Laksh      |  40000 | laksh@gmail.com      |
+| Shivani    |  38000 | shivani@gmail.com    |
+| Om         |  34000 | om@gmail.com         |
+| Anwesha    |  32000 | anwesha@gmail.com    |
+| Aaradhya   |  31000 | aaradhya@gmail.com   |
+| Shreyas    |  31000 | shreyas@gmail.com    |
++------------+--------+----------------------+
+
+-------query to display the name of all employee who is working as a HR in dept_id=30 or designation=clerk and salary >10000-------
+
+select name from emp_info where (designation='HR' and dept_id=30) or (designation='Clerk' and salary>10000);
++---------+
+| name    |
++---------+
+| Tejas   |
+| Yatmesh |
++---------+
+
+----------------query to display salary=35000 and designation=software developer-----------
+
+ select salary from emp_info where designation='software developer' and salary=35000;
++--------+
+| salary |
++--------+
+|  35000 |
++--------+
+
+
+----------query to display content of emp_info where designation is not equal to software developer------
+
+ select * from emp_info where not designation='software developer';
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  22 | Pushkar    | pushkar@gmail.com    | HR          |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  33 | Tejas      | tejas@gmail.com      | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman    |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst     |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  66 | Shaahank   | shashank@gmail.com   | Tester      |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR          |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal    | khushal@gmail.com    | Analyst     |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 109 | Laksh      | laksh@gmail.com      | Analyst     |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani    | shivani@gmail.com    | HR          |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om         | om@gmail.com         | Tester      |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst     |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman    |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
+| 161 | Shreyas    | shreyas@gmail.com    | Tester      |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+-----query to display all the employee excluding dept_id=20 or dept_id=30---------
+
+ select * from emp_info where dept_id!=20 and dept_id!=30;
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name    | emailid           | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak   | palak@gmail.com   | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar | pushkar@gmail.com | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  55 | Ameyaa  | ameyaa@gmail.com  | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  88 | Nikunj  | nikunj@gmail.com  | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+| 109 | Laksh   | laksh@gmail.com   | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani | shivani@gmail.com | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om      | om@gmail.com      | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha | anwesha@gmail.com | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+
+ select * from emp_info where dept_id<20 or dept_id>30;
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name    | emailid           | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak   | palak@gmail.com   | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar | pushkar@gmail.com | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  55 | Ameyaa  | ameyaa@gmail.com  | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  88 | Nikunj  | nikunj@gmail.com  | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+| 109 | Laksh   | laksh@gmail.com   | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani | shivani@gmail.com | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om      | om@gmail.com      | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha | anwesha@gmail.com | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+
+select * from emp_info where not (dept_id=20 or dept_id=30);
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name    | emailid           | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak   | palak@gmail.com   | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar | pushkar@gmail.com | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  55 | Ameyaa  | ameyaa@gmail.com  | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  88 | Nikunj  | nikunj@gmail.com  | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+| 109 | Laksh   | laksh@gmail.com   | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani | shivani@gmail.com | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om      | om@gmail.com      | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha | anwesha@gmail.com | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
++-----+---------+-------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+-------query to display all the employee details excluding salesman  with dept_id=40---------
+
+select * from emp_info where not (designation='salesman' and dept_id=40);
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  66 | Shaahank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
+| 161 | Shreyas    | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+-------------query to display all the employee detail who is working as a salesman with dept_id=20 or 30-----
+
+select * from emp_info where designation='salesman' and (dept_id=20 or dept_id=30);
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman    |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman    |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
++-----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+
+----------------query to display all the employee who is working with dept_20 only if there salary>10000 and salary<35000 including 10000 and 25000
+select * from emp_info where dept_id=20 and (salary>=10000 and salary<=35000);
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  77 | Yatmesh  | yatmesh@gmail.com  | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+| 151 | Aaradhya | aaradhya@gmail.com | Salesman    |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+---query to display all the records who is working as software developer and dob is 1998------
+
+select * from emp_info where designation='software developer' and dob<'1999-01-01';
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name  | emailid         | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| 11 | Palak | palak@gmail.com | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+--------query to display the employee who is working with dept_id=10 or 20 or 30-----------
+
+ select * from emp_info where dept_id=10 or dept_id=20 or dept_id=30;
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  66 | Shaahank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
+| 161 | Shreyas    | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+-------------query to display all the employee details whose job designation is tester, hr, analyst------
+
+select * from emp_info where designation in('tester', 'hr', 'analyst');
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  22 | Pushkar  | pushkar@gmail.com  | HR          |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  55 | Ameyaa   | ameyaa@gmail.com   | Analyst     |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  66 | Shaahank | shashank@gmail.com | Tester      |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  88 | Nikunj   | nikunj@gmail.com   | HR          |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal  | khushal@gmail.com  | Analyst     |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 109 | Laksh    | laksh@gmail.com    | Analyst     |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani  | shivani@gmail.com  | HR          |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om       | om@gmail.com       | Tester      |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha  | anwesha@gmail.com  | Analyst     |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
+| 161 | nikunj   | shreyas@gmail.com  | Tester      |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+--------------query to display all the employee detail who are working as a clerk with dept_id =20,30,40,60,70----------
+
+ select * from emp_info where designation='clerk' and  dept_id in(10,20,30,40,60,70);
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name    | emailid           | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| 33 | Tejas   | tejas@gmail.com   | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+| 77 | Yatmesh | yatmesh@gmail.com | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+----------------------query to display all the employees who are working as a clerk and not in dept_id=30,40,60,70------
+
+ select * from emp_info where designation='clerk' and  dept_id not in(10,30,40,60,70);
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name    | emailid           | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| 33 | Tejas   | tejas@gmail.com   | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+| 77 | Yatmesh | yatmesh@gmail.com | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+------------query to display all the details of employee who are working in dept_id=20,40,60 excluding the salesman or analyst------
+select * from emp_info where dept_id in(20,40,60) and  designation not in('salesman', 'analyst');
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name    | emailid           | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| 33 | Tejas   | tejas@gmail.com   | Clerk       |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+| 77 | Yatmesh | yatmesh@gmail.com | Clerk       |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+| 88 | Nikunj  | nikunj@gmail.com  | HR          |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
++----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+-------------query to display all the detail of employee whose salary is in range of 20000 and 50000-----
+
+select name, salary, dept_id from emp_info  where  dept_id  in(10,20) and (salary not between 15000 and 30000);
++----------+--------+---------+
+| name     | salary | dept_id |
++----------+--------+---------+
+| Palak    |  35000 |      10 |
+| Pushkar  |  32000 |      10 |
+| Tejas    |  36000 |      20 |
+| Laksh    |  40000 |      10 |
+| Shivani  |  38000 |      10 |
+| Om       |  34000 |      10 |
+| Aaradhya |  31000 |      20 |
++----------+--------+---------+
+
+
+select * from emp_info where salary between 20000 and 50000;
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
+| 161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+-----------------write a query to display all the details of employee who has doj 2017 -----
+
+ select * from emp_info where doj between '2017-01-01' and  '2017-12-31';
++-----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name    | emailid           | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  22 | Pushkar | pushkar@gmail.com | HR          |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+| 109 | Laksh   | laksh@gmail.com   | Analyst     |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani | shivani@gmail.com | HR          |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 141 | Anwesha | anwesha@gmail.com | Analyst     |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       |
+| 161 | nikunj  | shreyas@gmail.com | Tester      |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+---------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+
+
+-----------------write a query to display all the details of employee excluding who has doj 2017 ----- 
+
+ select * from emp_info where doj not between '2017-01-01' and  '2017-12-31';
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+-------query to display employee name, salary and dept_id of all the employee who is working in dept_id 10 or 20 excluding employee whose salary >=15000 and salary<=50000
+
+select name, salary, dept_id from emp_info  where  dept_id  in(10,20) and (salary not between 15000 and 30000);
++----------+--------+---------+
+| name     | salary | dept_id |
++----------+--------+---------+
+| Palak    |  35000 |      10 |
+| Pushkar  |  32000 |      10 |
+| Tejas    |  36000 |      20 |
+| Laksh    |  40000 |      10 |
+| Shivani  |  38000 |      10 |
+| Om       |  34000 |      10 |
+| Aaradhya |  31000 |      20 |
++----------+--------+---------+
+
+
+----write a query to display emp_name and annual salary if designation is null----
+ insert into emp_info(id, name, dob) values(171,'shweta', '1998-10-11');
+
+ select * from emp_info where age is null;
++-----+--------+---------+-------------+----------+------+------------+------+--------+---------+-------------+
+| id  | name   | emailid | designation | mobileno | age  | dob        | doj  | salary | dept_id | blood_group |
++-----+--------+---------+-------------+----------+------+------------+------+--------+---------+-------------+
+| 171 | shweta | NULL    | NULL        |     NULL | NULL | 1998-10-11 | NULL |   NULL |    NULL | NULL        |
++-----+--------+---------+-------------+----------+------+------------+------+--------+---------+-------------+
+
+
+ select name, salary from emp_info where designation is null;
++--------+--------+
+| name   | salary |
++--------+--------+
+| shweta |   NULL |
++--------+--------+
+
+
+
+----write a query to display emp_name and annual salary if designation is not null----
+
+ select name, salary from emp_info where designation is NOT  null;
++------------+--------+
+| name       | salary |
++------------+--------+
+| Palak      |  35000 |
+| Pushkar    |  32000 |
+| Tejas      |  36000 |
+| Prathamesh |  32000 |
+| Ameyaa     |  40000 |
+| shashank   |  45000 |
+| Yatmesh    |  30000 |
+| Nikunj     |  36000 |
+| Khushal    |  42000 |
+| Laksh      |  40000 |
+| Shivani    |  38000 |
+| Om         |  34000 |
+| Anwesha    |  32000 |
+| Aaradhya   |  31000 |
+| nikunj     |  31000 |
++------------+--------+
+
+-------query to display detail of employee whose name start with s-----
+
+select * from emp_info where name like 'S%';
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  66 | shashank | shashank@gmail.com | Tester      |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+| 121 | Shivani  | shivani@gmail.com  | HR          |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 171 | shweta   | NULL               | NULL        |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+
+---------------------------query to  display all the detail of employee whose name contain only 6 characters----
+
+ select * from emp_info where name like '______';
++-----+--------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name   | emailid           | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+--------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  55 | Ameyaa | ameyaa@gmail.com  | Analyst     |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       |
+|  88 | Nikunj | nikunj@gmail.com  | HR          |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+| 161 | nikunj | shreyas@gmail.com | Tester      |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
+| 171 | shweta | NULL              | NULL        |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        |
++-----+--------+-------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+-----------query to display name, salary dob, doj, age whose name starts with a and end with a---
+
+ select name, age, salary, dob, doj from emp_info where name like 'A%a';
++----------+------+--------+------------+------------+
+| name     | age  | salary | dob        | doj        |
++----------+------+--------+------------+------------+
+| Ameyaa   |   19 |  40000 | 2000-02-22 | 2019-05-12 |
+| Anwesha  |   21 |  32000 | 1998-10-16 | 2017-01-11 |
+| Aaradhya |   21 |  31000 | 1998-04-05 | 2018-06-11 |
++----------+------+--------+------------+------------+
+
+--------query to display all the record of employee whose 2nd character is i---
+ select name, age, salary, dob, doj from emp_info where name like '_i%';
++--------+------+--------+------------+------------+
+| name   | age  | salary | dob        | doj        |
++--------+------+--------+------------+------------+
+| Nikunj |   20 |  36000 | 1999-11-14 | 2018-02-08 |
+| nikunj |   22 |  31000 | 1997-04-12 | 2017-05-11 |
++--------+------+--------+------------+------------+
+
+
+------query to display all the information of employee where designation have atleast 2 time e-----
+
+ select *  from emp_info where designation like '%e%e%';
++-----+----------+--------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak    | palak@gmail.com    | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  66 | shashank | shashank@gmail.com | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+| 131 | Om       | om@gmail.com       | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 161 | nikunj   | shreyas@gmail.com  | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
++-----+----------+--------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+-------query to select all string of length 5 that start with p and 2nd last character of string is a--
+
+ select *  from emp_info where name like 'p__a_';
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name  | emailid         | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| 11 | Palak | palak@gmail.com | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
++----+-------+-----------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+--------------query to display all the detail of employee if name if employee start with s character or start with k character ---
+
+
+ select *  from emp_info where name like 's%' or name like 'k%';
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name     | emailid            | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+|  66 | shashank | shashank@gmail.com | Tester      |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  99 | Khushal  | khushal@gmail.com  | Analyst     |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 121 | Shivani  | shivani@gmail.com  | HR          |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 171 | shweta   | NULL               | NULL        |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        |
++-----+----------+--------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+
+---query to display all the records of employee whose name 3rd character is a and 6th character a----
+
+ select *  from emp_info where name like '__a__a%';
++----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| id | name       | emailid              | designation | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+| 44 | Prathamesh | prathamesh@gmail.com | Salesman    |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+| 66 | shashank   | shashank@gmail.com   | Tester      |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
++----+------------+----------------------+-------------+----------+------+------------+------------+--------+---------+-------------+
+
+--------query to display all the record of employee whose name do not start with a---------
+select *  from emp_info where name not like 'a%';
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      |
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       |
+| 161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       |
+| 171 | shweta     | NULL                 | NULL               |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+
+
+------query to display average salary of employee--
+
+  select avg(salary) average_salary from emp_info;
++----------------+
+| average_salary |
++----------------+
+|          35600 |
++----------------+
+
+
+----------query to display min, max ,sum, count of salary---
+
+ select max(salary) maximum_salary from emp_info;
++----------------+
+| maximum_salary |
++----------------+
+|          45000 |
++----------------+
+
+ select min(salary) minimum_salary from emp_info;
++----------------+
+| minimum_salary |
++----------------+
+|          30000 |
++----------------+
+
+ select sum(salary) sum_of_salary from emp_info;
++---------------+
+| sum_of_salary |
++---------------+
+|        534000 |
++---------------+
+
+ select count(salary) count_of_column_salary from emp_info;
++------------------------+
+| count_of_column_salary |
++------------------------+
+|                     15 |
++------------------------+
+
+select avg(salary) avg_salary, min(salary) mini_salary, max(salary) max_salary, sum(salary) sum_of_salary, count(salary) count_of_column from emp_info;
++------------+-------------+------------+---------------+-----------------+
+| avg_salary | mini_salary | max_salary | sum_of_salary | count_of_column |
++------------+-------------+------------+---------------+-----------------+
+|      35600 |       30000 |      45000 |        534000 |              15 |
++------------+-------------+------------+---------------+-----------------+ 
+
+
+
+
+-----------------query to display no of employyees hired after 2016-----
+
+ select count(*) from emp_info where doj between '2015-12-31' and '2016-12-31';
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+
+select count(doj) from emp_info where doj between '2015-12-31' and '2016-12-31';
++------------+
+| count(doj) |
++------------+
+|          1 |
++------------+
+-----------query to display avg salary and the highest salary of dept 20, 30, 40 and 60----
+ select avg(salary) avg_salary, max(salary) max_salary from emp_info where dept_id in(10,20,30,40,60);
++------------+------------+
+| avg_salary | max_salary |
++------------+------------+
+|      35600 |      45000 |
++------------+------------+
+
+
+---------query to dispaly date of first and last hired employee-------
+
+select max(doj) last_hired, min(doj) first_hired from emp_info;
++------------+-------------+
+| last_hired | first_hired |
++------------+-------------+
+| 2019-07-15 | 2015-03-16  |
++------------+-------------+
+
+
+
+------------query to dispaly name in uppercase, designation in lower case -----------
+
+ select upper(name) from emp_info;
++-------------+
+| upper(name) |
++-------------+
+| PALAK       |
+| PUSHKAR     |
+| TEJAS       |
+| PRATHAMESH  |
+| AMEYAA      |
+| SHASHANK    |
+| YATMESH     |
+| NIKUNJ      |
+| KHUSHAL     |
+| LAKSH       |
+| SHIVANI     |
+| OM          |
+| ANWESHA     |
+| AARADHYA    |
+| NIKUNJ      |
+| SHWETA      |
++-------------+
+
+
+ select lower(designation) from emp_info;
++--------------------+
+| lower(designation) |
++--------------------+
+| software developer |
+| hr                 |
+| clerk              |
+| salesman           |
+| analyst            |
+| tester             |
+| clerk              |
+| hr                 |
+| analyst            |
+| analyst            |
+| hr                 |
+| tester             |
+| analyst            |
+| salesman           |
+| tester             |
+| NULL               |
++--------------------+
+
+
+
+-------------query to display length of each  name in emp_info-----------
+
+select length(name) from emp_info;
++--------------+
+| length(name) |
++--------------+
+|            5 |
+|            7 |
+|            5 |
+|           10 |
+|            6 |
+|            8 |
+|            7 |
+|            6 |
+|            7 |
+|            5 |
+|            7 |
+|            2 |
+|            7 |
+|            8 |
+|            6 |
+|            6 |
++--------------+
+
+
+
+-------------query to merge name and salary---------
+
+ select concat(name, salary) from emp_info;
++----------------------+
+| concat(name, salary) |
++----------------------+
+| Palak35000           |
+| Pushkar32000         |
+| Tejas36000           |
+| Prathamesh32000      |
+| Ameyaa40000          |
+| shashank45000        |
+| Yatmesh30000         |
+| Nikunj36000          |
+| Khushal42000         |
+| Laksh40000           |
+| Shivani38000         |
+| Om34000              |
+| Anwesha32000         |
+| Aaradhya31000        |
+| nikunj31000          |
+| NULL                 |
++----------------------+
+
+
+----------------query to reverse name-------
+
+select reverse(name) from emp_info;
++---------------+
+| reverse(name) |
++---------------+
+| kalaP         |
+| rakhsuP       |
+| sajeT         |
+| hsemahtarP    |
+| aayemA        |
+| knahsahs      |
+| hsemtaY       |
+| jnukiN        |
+| lahsuhK       |
+| hskaL         |
+| inavihS       |
+| mO            |
+| ahsewnA       |
+| ayhdaraA      |
+| jnukin        |
+| atewhs        |
++---------------+
+  
+
+--------query to display name of all employee only 3 character------------
+
+
+
+
+select substr(name, 1,3) from emp_info;
++-------------------+
+| substr(name, 1,3) |
++-------------------+
+| Pal               |
+| Pus               |
+| Tej               |
+| Pra               |
+| Ame               |
+| sha               |
+| Yat               |
+| Nik               |
+| Khu               |
+| Lak               |
+| Shi               |
+| Om                |
+| Anw               |
+| Aar               |
+| nik               |
+| shw               |
++-------------------+
+
+
+
+--------query to display all the detail of employee who's name begin with consonant----
+
+
+
+select * from emp_info where  substr(name, 1,1)  not in('a', 'e', 'i', 'o', 'u');
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group | last_name |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       | shivalkar |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       | shivalkar |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       | girap     |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      | patil     |
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       | patil     |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      | redkar    |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       | shivalkar |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       | koyande   |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       | shivalkar |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      | d         |
+| 161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       | shivalkar |
+| 171 | shweta     | NULL                 | NULL               |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        | d         |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+
+
+
+-----------------query to search position of 'a' in the name column------------
+
+
+
+select instr(name, 'a') from emp_info;
++------------------+
+| instr(name, 'a') |
++------------------+
+|                2 |
+|                6 |
+|                4 |
+|                3 |
+|                1 |
+|                3 |
+|                2 |
+|                0 |
+|                6 |
+|                2 |
+|                5 |
+|                0 |
+|                1 |
+|                1 |
+|                0 |
+|                6 |
++------------------+
+
+
+
+-----------------query to replace 'a' with 'z' in name--------
+
+select replace(name, 'a', 'z') from emp_info;
++-------------------------+
+| replace(name, 'a', 'z') |
++-------------------------+
+| Pzlzk                   |
+| Pushkzr                 |
+| Tejzs                   |
+| Przthzmesh              |
+| Ameyzz                  |
+| shzshznk                |
+| Yztmesh                 |
+| Nikunj                  |
+| Khushzl                 |
+| Lzksh                   |
+| Shivzni                 |
+| Om                      |
+| Anweshz                 |
+| Azrzdhyz                |
+| nikunj                  |
+| shwetz                  |
++-------------------------+
+
+---------------------query to display number of employee who is working in dept_id 20 and salary>15000-----------
+
+select count(*)  from emp_info where (dept_id=20 and salary>15000);
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+
+
+
+
+-------query to display highest salary of employee in each dept----
+
+select max(salary) from emp_info  group by dept_id;
++-------------+
+| max(salary) |
++-------------+
+|        NULL |
+|       40000 |
+|       36000 |
+|       45000 |
+|       40000 |
++-------------+
+
+
+------query to display number of software developer working in each dept-----
+
+
+ select count(*) from emp_info where designation='software developer'  group by dept_id;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+
+ select count(*), dept_id from emp_info where designation='software developer'  group by dept_id;
++----------+---------+
+| count(*) | dept_id |
++----------+---------+
+|        1 |      10 |
++----------+---------+
+
+
+--------------query to display no. of employee hired on each date-----
+
+ select count(*), doj  from emp_info  group by doj;
++----------+------------+
+| count(*) | doj        |
++----------+------------+
+|        1 | NULL       |
+|        1 | 2015-03-16 |
+|        1 | 2016-02-11 |
+|        1 | 2017-01-11 |
+|        1 | 2017-05-11 |
+|        1 | 2017-07-16 |
+|        1 | 2017-08-11 |
+|        1 | 2017-08-16 |
+|        1 | 2018-02-08 |
+|        1 | 2018-06-11 |
+|        1 | 2018-07-19 |
+|        1 | 2019-01-08 |
+|        1 | 2019-04-08 |
+|        1 | 2019-04-16 |
+|        1 | 2019-05-12 |
+|        1 | 2019-07-15 |
++----------+------------+
+
+
+---------------------query to display minimum salary for each designation-----------
+
+ select min(salary), designation  from emp_info  group by designation;
++-------------+--------------------+
+| min(salary) | designation        |
++-------------+--------------------+
+|        NULL | NULL               |
+|       32000 | Analyst            |
+|       30000 | Clerk              |
+|       32000 | HR                 |
+|       31000 | Salesman           |
+|       35000 | Software Developer |
+|       31000 | Tester             |
++-------------+--------------------+
+
+--------------------
+
+
+
+----------------query to display dept_id which has atleast 4 working employees----
+
+
+ select dept_id from emp_info group by dept_id having count(*)>=4;
++---------+
+| dept_id |
++---------+
+|      10 |
+|      30 |
++---------+
+
+-----------query to display dept_id which has total salary>20000--------------
+
+select dept_id from emp_info group by dept_id having sum(salary)>20000;
++---------+
+| dept_id |
++---------+
+|      10 |
+|      20 |
+|      30 |
+|      40 |
++---------+
+
+
+
+
+-------------query to display dept_id and avg_salary of all the dept_ whose avg_salary>20000 excluding the employee  name begin with 's'
+
+select dept_id,name,  avg(salary) from emp_info where name not like 's%' group by dept_id having avg(salary)>20000;
++---------+------------+--------------------+
+| dept_id | name       | avg(salary)        |
++---------+------------+--------------------+
+|      10 | Palak      |              35250 |
+|      20 | Tejas      | 32333.333333333332 |
+|      30 | Prathamesh |              35000 |
+|      40 | Ameyaa     |              36000 |
++---------+------------+--------------------+
+
+
+--------------query to display all the results of emp_info table , arrange the salary in descending order-------
+
+
+select * from emp_info order by salary DESC;
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group | last_name |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       | patil     |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       | koyande   |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       | prabhu    |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       | shivalkar |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      | d         |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       | girap     |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       | shivalkar |
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       | shivalkar |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       | sanaye    |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       | shivalkar |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      | patil     |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       | prabhu    |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      | t         |
+| 161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       | shivalkar |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      | redkar    |
+| 171 | shweta     | NULL                 | NULL               |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        | d         |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+
+
+select * from emp_info order by salary;
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group | last_name |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+| 171 | shweta     | NULL                 | NULL               |     NULL | NULL | 1998-10-11 | NULL       |   NULL |    NULL | NULL        | d         |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      | redkar    |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      | t         |
+| 161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       | shivalkar |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       | shivalkar |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      | patil     |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       | prabhu    |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       | sanaye    |
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       | shivalkar |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       | girap     |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       | shivalkar |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      | d         |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       | prabhu    |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       | shivalkar |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       | koyande   |
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       | patil     |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+
+---------------query to display name, designation, doj for all employee who are working in either one of the department 10 20 50 60. sort the records in descending order of their salary--------
+
+select name, designation, doj, salary, dept_id from emp_info where dept_id in(10,20,50,60) order by salary desc;
++----------+--------------------+------------+--------+---------+
+| name     | designation        | doj        | salary | dept_id |
++----------+--------------------+------------+--------+---------+
+| Laksh    | Analyst            | 2017-08-11 |  40000 |      10 |
+| Shivani  | HR                 | 2017-07-16 |  38000 |      10 |
+| Tejas    | Clerk              | 2019-04-16 |  36000 |      20 |
+| Palak    | Software Developer | 2019-07-15 |  35000 |      10 |
+| Om       | Tester             | 2018-07-19 |  34000 |      10 |
+| Pushkar  | HR                 | 2017-08-16 |  32000 |      10 |
+| Aaradhya | Salesman           | 2018-06-11 |  31000 |      20 |
+| Yatmesh  | Clerk              | 2019-04-08 |  30000 |      20 |
++----------+--------------------+------------+--------+---------+
+
+-------------query to display dept_id along with no of employee in it--------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select * from department_info     (select this query and click on the green play button or select and press ctrl+f5)
+
+----------query to display all the detail of employee whose designation is software developer and tester
+
+
+-----------------------------query to display name of employee who is working for research department---------------
+
+select * from department_info  where dname='research'; 
+select dept_id from department_info  where dname='research';
+select name from emp_info
+
+select name from emp_info where dept_id=( select dept_id from department_info  where dname='research');
+
+
+--------------query to display the name of employee who is working in location which has atleast one 'a' in its name-----
+
+ select name from emp_info where dept_id in(select dept_id from department_info where location like '%a%'); 
+
+
+------------------query to obtain 2nd max salary from the emp_info table----------------
+select max(salary) from emp_info where salary<(select max(salary) from emp_info);
+
+
+
+------------------query to obtain the third max salary-----------
+
+
+select max(salary) from emp_info where salary<(select max(salary) from emp_info where salary<(select max(salary) from emp_info));
+
+
+------------------query to display all the records using cartesian join----
+
+select * from emp_info cross join department_info;
+
+---------------------query to display all records using inner join---------------
+
+ select * from emp_info  inner join department_info  on emp_info.dept_id=department_info.dept_id;
+
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+---------+------------+-----------+
+| id  | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group | last_name | dept_id | dname      | location  |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+---------+------------+-----------+
+|  11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       | shivalkar |      10 | accounting | bangalore |
+|  22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       | shivalkar |      10 | accounting | bangalore |
+|  33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       | girap     |      20 | research   | pune      |
+|  44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      | patil     |      30 | sales      | New Delhi |
+|  55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       | prabhu    |      40 | operation  | chennai   |
+|  66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       | patil     |      30 | sales      | New Delhi |
+|  77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      | redkar    |      20 | research   | pune      |
+|  88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       | shivalkar |      40 | operation  | chennai   |
+|  99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       | koyande   |      30 | sales      | New Delhi |
+| 109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       | shivalkar |      10 | accounting | bangalore |
+| 121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      | d         |      10 | accounting | bangalore |
+| 131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       | sanaye    |      10 | accounting | bangalore |
+| 141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       | prabhu    |      40 | operation  | chennai   |
+| 151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      | t         |      20 | research   | pune      |
+| 161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       | shivalkar |      30 | sales      | New Delhi |
++-----+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+---------+------------+-----------+
+
+
+
+-------------------query to display all records using inner left join----------
+
+  select *  from department_info  left outer join emp_info  on emp_info.dept_id=department_info.dept_id;
++---------+--------------+-----------+------+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+| dept_id | dname        | location  | id   | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group | last_name |
++---------+--------------+-----------+------+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+|      10 | accounting   | bangalore |   11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       | shivalkar |
+|      10 | accounting   | bangalore |   22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       | shivalkar |
+|      20 | research     | pune      |   33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       | girap     |
+|      30 | sales        | New Delhi |   44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      | patil     |
+|      40 | operation    | chennai   |   55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       | prabhu    |
+|      30 | sales        | New Delhi |   66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       | patil     |
+|      20 | research     | pune      |   77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      | redkar    |
+|      40 | operation    | chennai   |   88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       | shivalkar |
+|      30 | sales        | New Delhi |   99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       | koyande   |
+|      10 | accounting   | bangalore |  109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       | shivalkar |
+|      10 | accounting   | bangalore |  121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      | d         |
+|      10 | accounting   | bangalore |  131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       | sanaye    |
+|      40 | operation    | chennai   |  141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       | prabhu    |
+|      20 | research     | pune      |  151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      | t         |
+|      30 | sales        | New Delhi |  161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       | shivalkar |
+|      50 | admin        | mumbai    | NULL | NULL       | NULL                 | NULL               |     NULL | NULL | NULL       | NULL       |   NULL |    NULL | NULL        | NULL      |
+|      60 | maintainance | goa       | NULL | NULL       | NULL                 | NULL               |     NULL | NULL | NULL       | NULL       |   NULL |    NULL | NULL        | NULL      |
++---------+--------------+-----------+------+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+
+
+------------------query to display all records using inner right join----------
+
+ select * from emp_info  right outer join department_info  on emp_info.dept_id=department_info.dept_id;
++------+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+---------+--------------+-----------+
+| id   | name       | emailid              | designation        | mobileno | age  | dob        | doj        | salary | dept_id | blood_group | last_name | dept_id | dname        | location  |
++------+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+---------+--------------+-----------+
+|   11 | Palak      | palak@gmail.com      | Software Developer |   986975 |   21 | 1998-01-19 | 2019-07-15 |  35000 |      10 | o +ve       | shivalkar |      10 | accounting   | bangalore |
+|   22 | Pushkar    | pushkar@gmail.com    | HR                 |   985824 |   19 | 1999-10-08 | 2017-08-16 |  32000 |      10 | o +ve       | shivalkar |      10 | accounting   | bangalore |
+|   33 | Tejas      | tejas@gmail.com      | Clerk              |   945824 |   22 | 1997-10-24 | 2019-04-16 |  36000 |      20 | b +ve       | girap     |      20 | research     | pune      |
+|   44 | Prathamesh | prathamesh@gmail.com | Salesman           |   922824 |   25 | 1994-05-24 | 2015-03-16 |  32000 |      30 | ab +ve      | patil     |      30 | sales        | New Delhi |
+|   55 | Ameyaa     | ameyaa@gmail.com     | Analyst            |    92252 |   19 | 2000-02-22 | 2019-05-12 |  40000 |      40 | a +ve       | prabhu    |      40 | operation    | chennai   |
+|   66 | shashank   | shashank@gmail.com   | Tester             |    92252 |   19 | 2000-03-17 | 2019-01-08 |  45000 |      30 | o +ve       | patil     |      30 | sales        | New Delhi |
+|   77 | Yatmesh    | yatmesh@gmail.com    | Clerk              |    92522 |   20 | 1999-09-14 | 2019-04-08 |  30000 |      20 | ab +ve      | redkar    |      20 | research     | pune      |
+|   88 | Nikunj     | nikunj@gmail.com     | HR                 |   981255 |   20 | 1999-11-14 | 2018-02-08 |  36000 |      40 | b +ve       | shivalkar |      40 | operation    | chennai   |
+|   99 | Khushal    | khushal@gmail.com    | Analyst            |   985842 |   21 | 1998-03-17 | 2016-02-11 |  42000 |      30 | o +ve       | koyande   |      30 | sales        | New Delhi |
+|  109 | Laksh      | laksh@gmail.com      | Analyst            |   985458 |   23 | 1996-04-18 | 2017-08-11 |  40000 |      10 | b +ve       | shivalkar |      10 | accounting   | bangalore |
+|  121 | Shivani    | shivani@gmail.com    | HR                 |   985258 |   22 | 1997-11-13 | 2017-07-16 |  38000 |      10 | ab +ve      | d         |      10 | accounting   | bangalore |
+|  131 | Om         | om@gmail.com         | Tester             |   985121 |   22 | 1997-06-22 | 2018-07-19 |  34000 |      10 | a +ve       | sanaye    |      10 | accounting   | bangalore |
+|  141 | Anwesha    | anwesha@gmail.com    | Analyst            |   925121 |   21 | 1998-10-16 | 2017-01-11 |  32000 |      40 | a +ve       | prabhu    |      40 | operation    | chennai   |
+|  151 | Aaradhya   | aaradhya@gmail.com   | Salesman           |   925145 |   21 | 1998-04-05 | 2018-06-11 |  31000 |      20 | ab +ve      | t         |      20 | research     | pune      |
+|  161 | nikunj     | shreyas@gmail.com    | Tester             |   925545 |   22 | 1997-04-12 | 2017-05-11 |  31000 |      30 | b +ve       | shivalkar |      30 | sales        | New Delhi |
+| NULL | NULL       | NULL                 | NULL               |     NULL | NULL | NULL       | NULL       |   NULL |    NULL | NULL        | NULL      |      50 | admin        | mumbai    |
+| NULL | NULL       | NULL                 | NULL               |     NULL | NULL | NULL       | NULL       |   NULL |    NULL | NULL        | NULL      |      60 | maintainance | goa       |
++------+------------+----------------------+--------------------+----------+------+------------+------------+--------+---------+-------------+-----------+---------+--------------+-----------+
+
+--------------------rollback--------------
+
+insert into department_info values(70, 'Acct', 'tamil nadu');
+select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
++---------+--------------+------------+
+
+rollback;
+
+ select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
++---------+--------------+------------+
+ set autocommit=0;
+ insert into department_info values(80, 'Acct', 'tamil');
+ select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
+|      80 | Acct         | tamil      |
++---------+--------------+------------+
+ rollback;
+select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
++---------+--------------+------------+
+
+---------------------savepoint----------------
+ savepoint a;
+ insert into department_info values(2550, 'rh', 'kkk');
+savepoint b;
+ delete from department_info where dept_id=10;
+select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
+|    1000 | research     | kerala     |
+|    2550 | rh           | kkk        |
++---------+--------------+------------+
+ rollback to a;
+select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
+|    1000 | research     | kerala     |
++---------+--------------+------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------commit------------------
+
+ insert into department_info values(1000, 'research', 'kerala');
+select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
+|    1000 | research     | kerala     |
++---------+--------------+------------+
+
+commit;
+rollback;
+ select * from department_info;
++---------+--------------+------------+
+| dept_id | dname        | location   |
++---------+--------------+------------+
+|      10 | accounting   | bangalore  |
+|      20 | research     | pune       |
+|      30 | sales        | New Delhi  |
+|      40 | operation    | chennai    |
+|      50 | admin        | mumbai     |
+|      60 | maintainance | goa        |
+|      70 | Acct         | tamil nadu |
+|    1000 | research     | kerala     |
++---------+--------------+------------+
