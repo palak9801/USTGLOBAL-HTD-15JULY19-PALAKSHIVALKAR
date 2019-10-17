@@ -1,0 +1,14 @@
+.content{
+    background-color: aqua;
+    height:300px;
+}
+.content1{
+    background-color:violet;
+    height:300px;
+}
+
+
+.container{
+    height:300px;
+    width:300px;
+}
