@@ -1,0 +1,48 @@
+<div class="row" style="background-color: cadetblue">
+    
+
+<div class="col-md-3" >
+<div class=" card card-body mt-5  "  >
+     <div *ngFor="let gnews of generalNews" class="mt-3 " style="align-content: center">  
+            <img src="{{gnews.urlToImage}}" style="height:200px; width:300px " class="mt-5">
+          <h3>{{gnews.title}}</h3>
+          <p>{{gnews.description}}</p>
+          <a href="{{gnews.url}}" class="btn btn-primary mt-2">
+              click here for more info....
+          </a>
+          </div>
+      </div>
+      </div>
+
+
+
+      <div class="col-md-6">
+            <div class=" card card-body mt-5 "  >
+                 <div *ngFor="let news of indianNews" class="mt-3 " style="align-content: center">  
+                        <img src="{{news.urlToImage}}" style="height:400px; width:700px " class="mt-5">
+                             <h3>{{news.title}}</h3>
+                              <p>{{news.description}}</p>
+                              <a href="{{news.url}}" class="btn btn-primary">
+                                          click here for more info....
+                                                </a>
+                      </div>
+                  </div>
+                  </div>
+
+
+
+
+      <div class="col-md-3 float-right">
+      <div class=" card card-body  mt-5"  >
+           <div *ngFor="let tnews of technologyNews" class="mt-3 " style="align-content: center">  
+            <img src="{{tnews.urlToImage}}" style="height:200px; width:340px " class="mt-3">
+          <h3>{{tnews.title}}</h3>
+          <p>{{tnews.description}}</p>
+          <a href="{{tnews.url}}" class="btn btn-primary mt-2">
+              click here for more info....
+          </a>
+          </div>
+      </div>
+      </div>
+
+      </div>

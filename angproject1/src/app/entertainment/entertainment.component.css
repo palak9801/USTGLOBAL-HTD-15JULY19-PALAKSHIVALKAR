@@ -1,0 +1,4 @@
+.col-md-3.offset-md-1.card.card-body{
+    overflow: scroll;
+    height: 550px;
+}

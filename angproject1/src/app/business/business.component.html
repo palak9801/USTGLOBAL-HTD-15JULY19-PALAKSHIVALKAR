@@ -1,0 +1,20 @@
+
+    
+    <div class="col-md-3 offset-md-1 card card-body float-left"  >
+
+
+      <div *ngFor="let bnews of businessNews">  
+          <img src="{{bnews.urlToImage}}" style="height:200px; width:340px " class="mt-3">
+        <h3>{{bnews.title}}</h3>
+        <p>{{bnews.description}}</p>
+        <a href="{{bnews.url}}" class="btn btn-primary mt-2">
+            click here for more info....
+        </a>
+        </div>
+    </div>
+    
+
+
+
+
+

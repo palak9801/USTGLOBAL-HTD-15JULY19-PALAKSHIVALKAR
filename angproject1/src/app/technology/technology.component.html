@@ -1,0 +1,13 @@
+<div class="container card card-body "  >
+
+
+        <div *ngFor="let tnews of technologyNews">  
+            <img src="{{tnews.urlToImage}}" style="height:200px; width:340px " class="mt-3">
+          <h3>{{tnews.title}}</h3>
+          <p>{{tnews.description}}</p>
+          <a href="{{tnews.url}}" class="btn btn-primary mt-2">
+              click here for more info....
+          </a>
+          </div>
+      </div>
+      
