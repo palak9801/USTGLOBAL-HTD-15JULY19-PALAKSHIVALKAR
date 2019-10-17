@@ -1,0 +1,22 @@
+<!-- <p>two-way works!</p> -->
+<div class="col-md-4 offset-4 card card-body mt-5">
+<input type="text" [(ngModel)]="dataFromInput" class='form-control' (keyup)='buttonEvent(dataFromInput)'>       <!--two way data binidng-->
+</div>
+
+<!-- <h1 class="text-center">{{dataFromInput}}</h1>      string interpolation -->
+
+<!-- <img src="{{dataFromInput}}"> -->
+
+<!--event binding-->
+
+<!-- <button class="btn btn-danger" onclick= 'alert("hello how r u?")'>
+   Give Alert
+</button> -->
+
+<h1 class="text-center" [style.background]="backgroundColor"> Event and Property Binding</h1>
+<button class="btn btn-primary" (click)='changeColor(dataFromInput)' >
+        Change Color
+     </button>
+
+
+    
